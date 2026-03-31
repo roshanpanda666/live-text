@@ -1,8 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Live Text 🎬 → 🔤
 
-## Getting Started
+**Live Text** is a web application that transforms any video into real-time, dynamic ASCII art. Upload an MP4 or WebM video, and watch the pixels convert into text instantly!
 
-First, run the development server:
+![Live Text Preview](./public/preview.png)
+*(Note: Add a `preview.png` in the `public` folder to show it here)*
+
+## 🌟 Features
+
+- **Real-Time Conversion**: Converts video frames to ASCII art in real-time.
+- **Dynamic Glow**: Beautiful, dark-themed UI with dynamic background glows.
+- **Support for Standard Formats**: Seamlessly upload and process MP4 and WebM video files.
+- **Powered by @chenglou/pretext**: Utilizing efficient text-rendering algorithms to generate stunning ASCII visuals.
+
+## 🚀 Getting Started
+
+Follow these steps to run the application locally:
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/roshanpanda666/live-text.git
+cd live-text
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+# or
+yarn install
+# or
+pnpm install
+```
+
+### 3. Run the development server
 
 ```bash
 npm run dev
@@ -10,27 +41,27 @@ npm run dev
 yarn dev
 # or
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Built With
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [Next.js](https://nextjs.org/) - The React Framework for the Web.
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework for rapid UI development.
+- [TypeScript](https://www.typescriptlang.org/) - Strongly typed programming language that builds on JavaScript.
+- Pretext (`@chenglou/pretext`) - For core ASCII generation.
 
-## Learn More
+## 🤝 Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/roshanpanda666/live-text/issues).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+This project is open-source and available under the [MIT License](LICENSE).
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<p align="center">
+  Made with love by <strong>Roshan</strong> - <a href="https://github.com/roshanpanda666">GitHub Profile</a>
+</p>
