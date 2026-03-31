@@ -2,9 +2,6 @@
 
 **Live Text** is a web application that transforms any video into real-time, dynamic ASCII art. Upload an MP4 or WebM video, and watch the pixels convert into text instantly!
 
-![Live Text Preview](./public/preview.png)
-*(Note: Add a `preview.png` in the `public` folder to show it here)*
-
 ## 🌟 Features
 
 - **Real-Time Conversion**: Converts video frames to ASCII art in real-time.
