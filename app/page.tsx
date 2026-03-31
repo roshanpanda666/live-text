@@ -1,65 +1,88 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useRef } from "react";
+import AsciiRenderer from "../components/AsciiRenderer";
 
 export default function Home() {
+  const [file, setFile] = useState<File | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setFile(e.target.files[0]);
+    }
+  };
+
+  const triggerUpload = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-black text-zinc-100 selection:bg-blue-500/30 overflow-x-hidden font-sans pb-24">
+      {/* Dynamic Background Glow */}
+      <div className="absolute top-0 inset-x-0 h-[500px] pointer-events-none overflow-hidden">
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 blur-[120px] opacity-20 bg-gradient-to-b from-blue-600 to-purple-600 w-[600px] h-[400px] rounded-full"></div>
+      </div>
+
+      <main className="relative z-10 flex flex-col items-center pt-24 px-6 max-w-6xl mx-auto">
+        
+        {/* Header Section */}
+        <div className="text-center space-y-4 mb-12">
+          <div className="inline-flex items-center justify-center px-3 py-1 text-xs font-semibold tracking-wide text-blue-400 uppercase bg-blue-500/10 rounded-full border border-blue-500/20 mb-4 shadow-[0_0_15px_rgba(59,130,246,0.15)] flex-wrap gap-1">
+            <span>Powered by @chenglou/pretext</span>
+            <span className="text-blue-500/50 hidden sm:inline">|</span>
+            
+          </div>
+          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 via-white to-zinc-400 drop-shadow-sm">
+            Live Text
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="text-lg md:text-xl text-zinc-400 max-w-2xl mx-auto">
+            Transform any video into real-time, dynamic ASCII art. 
+            Upload an MP4 and watch the pixels convert into text instantly.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+
+        {/* Upload Button */}
+        <div className="relative group w-full max-w-md mx-auto">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl blur opacity-30 group-hover:opacity-70 transition duration-500"></div>
+          <button 
+            onClick={triggerUpload}
+            className="relative w-full flex flex-col items-center justify-center p-8 bg-zinc-950 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors cursor-pointer"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <div className="w-16 h-16 mb-4 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/10 transition-all duration-300">
+             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+            </div>
+            <span className="text-zinc-200 font-medium text-lg">Select a Video File</span>
+            <span className="text-zinc-500 text-sm mt-2">MP4, WebM formats supported</span>
+          </button>
+          <input 
+            type="file" 
+            accept="video/*" 
+            ref={fileInputRef} 
+            onChange={handleFileChange} 
+            className="hidden" 
+          />
         </div>
+
+        {/* Video to ASCII Renderer Component */}
+        <AsciiRenderer videoFile={file} />
+
       </main>
+
+      {/* Footer */}
+      <footer className="relative z-10 py-8 text-center text-zinc-500 text-sm w-full mt-auto">
+        <p>
+          Made with love by Roshan -{" "}
+          <a
+            href="https://github.com/roshanpanda666"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:text-blue-300 transition-colors font-medium underline underline-offset-4"
+          >
+            https://github.com/roshanpanda666
+          </a>
+        </p>
+      </footer>
     </div>
   );
 }
